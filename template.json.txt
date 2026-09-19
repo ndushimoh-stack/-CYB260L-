@@ -1,0 +1,31 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "apiVersion": "2018-02-01",
+      "type": "Microsoft.Web/serverfarms",
+      "kind": "app",
+      "name": "calabs8584-AppServicePlan",
+      "location": "[resourceGroup().location]",
+      "properties": {},
+      "dependsOn": [],
+      "sku": {
+        "name": "S1"
+      }
+    },
+    {
+      "apiVersion": "2018-11-01",
+      "type": "Microsoft.Web/sites",
+      "kind": "app",
+      "name": "calabs8584-webapp",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', 'calabs8584-AppServicePlan')]"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', 'calabs8584-AppServicePlan')]"
+      ]
+    }
+  ]
+}

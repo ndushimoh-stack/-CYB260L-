@@ -1,0 +1,9 @@
+Resources:
+ Instances:
+    Type: AWS::EC2::Instance
+    Properties:
+        AdditionalInfo: String
+        Affinity: String
+        AvailabilityZone: String
+        BlockDeviceMappings:
+            - BlockDeviceMapping
